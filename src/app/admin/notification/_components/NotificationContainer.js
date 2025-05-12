@@ -57,9 +57,11 @@ export default function NotificationContainer() {
   };
 
   return (
-    <div className="rounded-2xl bg-primary-black">
-      <section className="p-6 flex-center-between">
-        <h3 className="text-2xl font-semibold text-white">Notifications</h3>
+    <div className="rounded-2xl bg-white shadow-2xl">
+      <section className="flex-center-between p-6">
+        <h3 className="text-2xl font-semibold text-primary-black">
+          Notifications
+        </h3>
 
         <div className="flex gap-2">
           <Button
@@ -80,9 +82,9 @@ export default function NotificationContainer() {
 
       <Divider className="!my-0 !w-full bg-white" />
 
-      <div className="py-5 mb-10">
+      <div className="mb-10 py-5">
         {notifications?.length > 0 ? (
-          <section className="px-4 space-y-4">
+          <section className="space-y-4 px-4">
             {notifications?.map((notification) => (
               <NotificationCard
                 key={notification.key}

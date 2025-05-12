@@ -17,8 +17,9 @@ export default function SettingsLayout({ children }) {
           <ArrowLeft size={16} className="mb-1" /> Settings
         </Link>
       )}
-
-      {children}
+      <div className="mb-10 min-h-[100vh] !rounded-2xl p-5 shadow-2xl">
+        {children}
+      </div>
     </div>
   );
 }

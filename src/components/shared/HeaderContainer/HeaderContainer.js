@@ -93,7 +93,7 @@ export default function HeaderContainer({ collapsed, setCollapsed }) {
 
   return (
     <Header
-      className="border-[rgb(0 0 0 / 0.25)] border-b !shadow-2xl z-[999999]"
+      className="border-[rgb(0 0 0 / 0.25)] z-[999999] border-b !shadow-lg"
       style={{
         backgroundColor: "var(--primary-white)",
         color: "var(--primary-black)",
@@ -129,7 +129,7 @@ export default function HeaderContainer({ collapsed, setCollapsed }) {
             <div className="absolute right-2 top-1 size-3 rounded-full bg-[#f48b2f]" />
           )}
 
-          <button className="p-2 rounded-full bg-primary-black">
+          <button className="rounded-full bg-primary-black p-2">
             <Bell stroke="var(--primary-white)" size={22} />
           </button>
         </Link>
@@ -137,7 +137,7 @@ export default function HeaderContainer({ collapsed, setCollapsed }) {
         {/* User */}
         <Link
           href={"/admin/profile"}
-          className="flex items-center hover:text-primary-blue group gap-x-2 text-primary-black"
+          className="hover:text-primary-blue group flex items-center gap-x-2 text-primary-black"
         >
           {myProfile?.image ? (
             <Image

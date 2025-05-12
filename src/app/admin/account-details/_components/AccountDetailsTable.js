@@ -85,7 +85,7 @@ export default function AccountDetailsTable() {
               alt={"User avatar of" + value?.name}
               width={50}
               height={50}
-              className="bg-white rounded-full aspect-square ring ring-primary ring-offset-transparent"
+              className="aspect-square rounded-full bg-white ring ring-primary ring-offset-transparent"
             />
           ) : (
             <Avatar size={50}>{value?.name && value?.name[0]}</Avatar>
@@ -122,49 +122,48 @@ export default function AccountDetailsTable() {
     },
     {
       title: "Action",
-      render: (value) =>
+      render: (value) => (
         <div className="flex-center-start gap-x-3">
-        <CustomTooltip title="View Details">
-                    <button
-                      onClick={() => setProfileModalOpen((pre) => !pre)}
-                      className="!rounded-full !shadow-none"
-                    >
-                      <Eye size={20} />
-                    </button>
-                  </CustomTooltip>
-    {    value?.status === "blocked" ? (
-          <Tooltip title="Unblock User">
-            <div className="w-max">
-              <CustomConfirm
-                title="Unblock User"
-                description="Are you sure to unblock this user?"
-                onConfirm={() => handleUnblockUser(value?._id)}
-              >
-                <button>
-                  <UserCheck color="lightGreen" size={20} />
-                </button>
-              </CustomConfirm>
-            </div>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Block User">
-            <div className="w-max">
-              <CustomConfirm
-                title="Block User"
-                description="Are you sure to block this user?"
-                onConfirm={() => handleBlockUser(value?._id)}
-              >
-                <button>
-                  <UserRoundX color="#F16365" size={20} />
-                </button>
-              </CustomConfirm>
-            </div>
-          </Tooltip>
-        )}
-
+          <CustomTooltip title="View Details">
+            <button
+              onClick={() => setProfileModalOpen((pre) => !pre)}
+              className="!rounded-full !shadow-none"
+            >
+              <Eye size={20} />
+            </button>
+          </CustomTooltip>
+          {value?.status === "blocked" ? (
+            <Tooltip title="Unblock User">
+              <div className="w-max">
+                <CustomConfirm
+                  title="Unblock User"
+                  description="Are you sure to unblock this user?"
+                  onConfirm={() => handleUnblockUser(value?._id)}
+                >
+                  <button>
+                    <UserCheck color="lightGreen" size={20} />
+                  </button>
+                </CustomConfirm>
+              </div>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Block User">
+              <div className="w-max">
+                <CustomConfirm
+                  title="Block User"
+                  description="Are you sure to block this user?"
+                  onConfirm={() => handleBlockUser(value?._id)}
+                >
+                  <button>
+                    <UserRoundX color="#F16365" size={20} />
+                  </button>
+                </CustomConfirm>
+              </div>
+            </Tooltip>
+          )}
         </div>
+      ),
     },
-    
   ];
 
   return (
@@ -176,28 +175,29 @@ export default function AccountDetailsTable() {
         },
       }}
     >
-      <div className="px-1 mb-4 flex-center-between">
-        <h2 className="text-[26px] font-semibold text-white">
-          Account Details
-        </h2>
+      <div className="mb-10 !rounded-2xl p-5 shadow-2xl">
+        <div className="flex-center-between mb-4 px-1">
+          <h2 className="text-[26px] font-semibold text-white">
+            Account Details
+          </h2>
 
-        <Input
-          placeholder="Search by name or email"
-          prefix={<Search className="mr-2 text-muted" size={18} />}
-          className="h-10 !w-1/2 !rounded-lg !border !text-base lg:!w-1/3 2xl:!w-1/4"
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+          <Input
+            placeholder="Search by name or email"
+            prefix={<Search className="mr-2 text-muted" size={18} />}
+            className="h-10 !w-1/2 !rounded-lg !border !text-base lg:!w-1/3 2xl:!w-1/4"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        <Table
+          style={{ overflowX: "auto" }}
+          columns={columns}
+          dataSource={allUsers}
+          scroll={{ x: "100%" }}
+          loading={isLoading}
+          pagination
+        ></Table>
       </div>
-
-      <Table
-        style={{ overflowX: "auto" }}
-        columns={columns}
-        dataSource={allUsers}
-        scroll={{ x: "100%" }}
-        loading={isLoading}
-        pagination
-      ></Table>
-
       <ProfileModal open={profileModalOpen} setOpen={setProfileModalOpen} />
     </ConfigProvider>
   );

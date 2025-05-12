@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { successToast } from "@/utils/customToast";
 import { LayoutDashboard } from "lucide-react";
 import { BookImage } from "lucide-react";
+import Image from "next/image";
 
 const SidebarContainer = ({ collapsed }) => {
   const dispatch = useDispatch();
@@ -71,11 +72,11 @@ const SidebarContainer = ({ collapsed }) => {
         maxHeight: "100vh",
         overflow: "auto",
       }}
-      className="scroll-hide !shadow-2xl"
+      className="scroll-hide !shadow-xl"
     >
       <div className="mb-6 flex flex-col items-center justify-center gap-y-5">
         <Link href={"/"}>
-          <img
+          <Image
             src={"/logo.png"}
             className={collapsed ? "h-[60px] w-[60px]" : "h-[140px] w-[140px]"}
             alt="logo"

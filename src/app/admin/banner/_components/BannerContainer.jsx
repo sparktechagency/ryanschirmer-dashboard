@@ -1,6 +1,7 @@
 "use client";
 import { Button, Select } from "antd";
 import { Camera } from "lucide-react";
+import Image from "next/image";
 
 export default function BannerContainer() {
   const items = [
@@ -15,7 +16,7 @@ export default function BannerContainer() {
   ];
   return (
     <div className="space-y-10">
-      <div className="h-screen w-full bg-primary-white px-5 py-10 shadow-2xl">
+      <div className="h-screen w-full rounded-2xl bg-primary-white px-5 py-10 shadow-2xl">
         <div className="flex items-center justify-end">
           <Select
             showSearch
@@ -38,7 +39,7 @@ export default function BannerContainer() {
               of 424px and a height of 775px.
             </p>
             <div className="relative">
-              <img
+              <Image
                 src="https://www.creativehatti.com/wp-content/uploads/edd/2022/03/Banner-template-of-personal-loan-with-easy-payment-13-large.jpg"
                 alt=""
                 className="h-[400px] w-[280px] rounded-lg brightness-50 transition-all duration-300 hover:cursor-pointer group-hover:filter"
@@ -55,7 +56,7 @@ export default function BannerContainer() {
               of 424px and a height of 775px.
             </p>
             <div className="relative">
-              <img
+              <Image
                 src="https://www.creativehatti.com/wp-content/uploads/edd/2022/03/Banner-template-of-personal-loan-with-easy-payment-13-large.jpg"
                 alt=""
                 className="h-[400px] w-[280px] rounded-lg brightness-50 transition-all duration-300 hover:cursor-pointer group-hover:filter"

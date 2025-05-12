@@ -7,6 +7,7 @@ import PageLoader from "@/components/shared/PageLoader/PageLoader";
 import { useGetDashboardDataQuery } from "@/redux/api/income.api";
 import { useState } from "react";
 import dayjs from "dayjs";
+import { priceFormat } from "@/utils/format";
 
 export default function DashboardContainer() {
   const [JoinYear, setJoinYear] = useState();
@@ -108,21 +109,19 @@ export default function DashboardContainer() {
         {userStats?.map((stat) => (
           <div
             key={stat.key}
-            className="px-6 py-6 shadow-2xl flex-center-start gap-x-4 rounded-xl bg-primary text-primary-black"
+            className="flex-center-start gap-x-4 rounded-xl bg-primary px-6 py-6 text-primary-black shadow-2xl"
           >
-            <div className="p-4 rounded-full flex-center aspect-square bg-primary-black">
+            <div className="flex-center aspect-square rounded-full bg-primary-black p-4">
               {stat.icon}
             </div>
 
             <div>
               <p className="text-lg font-medium">{stat.title}</p>
-              <h5 className="mt-1 text-4xl font-medium text-">
+              <h5 className="text- mt-1 text-4xl font-medium">
                 {stat.key !== "earnings" ? (
-                  <span>{stat?.count}</span>
+                  <span className="">{stat?.count}</span>
                 ) : (
-                  <span>
-                    <span className="text-sm">{stat?.count} USD</span>
-                  </span>
+                  <p>{priceFormat(stat?.count ?? 0)}</p>
                 )}
               </h5>
             </div>
@@ -131,7 +130,7 @@ export default function DashboardContainer() {
       </section>
 
       {/* Charts */}
-      <section className="flex-col gap-10 flex-center-between lg:flex-row">
+      <section className="flex-center-between flex-col gap-10 lg:flex-row">
         <CustomBarChart
           chartName={"Users"}
           data={dashboardData?.monthlyUsers || []}

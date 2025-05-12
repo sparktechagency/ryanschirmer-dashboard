@@ -13,8 +13,8 @@ import {
 
 const CustomAreaChart = ({ chartName, data, setIncomeYear }) => {
   return (
-    <div className="w-full p-6 shadow-2xl rounded-xl bg-primary-white md:w-1/2">
-      <div className="flex items-center justify-between mb-10">
+    <div className="w-full rounded-xl bg-primary-white p-6 shadow-2xl md:w-1/2">
+      <div className="mb-10 flex items-center justify-between">
         <h1 className="text-xl font-medium text-primary-black">
           {chartName} Overview
         </h1>
@@ -23,6 +23,7 @@ const CustomAreaChart = ({ chartName, data, setIncomeYear }) => {
           <DatePicker
             onChange={(date, dateString) => setIncomeYear(dateString)}
             picker="year"
+            className="border border-primary"
             defaultValue={dayjs()}
             style={{ height: "35px", border: "none" }}
             disabledDate={(current) =>
@@ -39,7 +40,7 @@ const CustomAreaChart = ({ chartName, data, setIncomeYear }) => {
         >
           <defs>
             <linearGradient id="gradientFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="var(--secondary)" stopOpacity={1} />
+              <stop offset="0%" stopColor="var(--primary)" stopOpacity={1} />
               <stop
                 offset="100%"
                 stopColor="rgba(117, 136, 136, 0.10)"
@@ -78,7 +79,7 @@ const CustomAreaChart = ({ chartName, data, setIncomeYear }) => {
               border: "0",
             }}
             itemStyle={{
-              color: "var(--primary)", 
+              color: "var(--primary)",
               fontWeight: "500",
             }}
           />

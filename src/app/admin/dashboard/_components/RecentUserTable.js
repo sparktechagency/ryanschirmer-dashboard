@@ -2,11 +2,9 @@
 
 "use client";
 
-import { Input, Table } from "antd";
+import { Table } from "antd";
 import { Tooltip } from "antd";
 import { ConfigProvider } from "antd";
-import { Search } from "lucide-react";
-import userImage from "@/assets/images/user-avatar-lg.png";
 import { useState } from "react";
 import CustomConfirm from "@/components/CustomConfirm/CustomConfirm";
 import ProfileModal from "@/components/SharedModals/ProfileModal";
@@ -64,10 +62,13 @@ const RecentUserTable = ({ data: allUsers, isLoading, refetch }) => {
               alt={"User avatar of" + value?.name}
               width={50}
               height={50}
-              className="ring-primary aspect-square rounded-full bg-white ring ring-offset-transparent"
+              className="bg-secondary aspect-square rounded-full ring ring-primary ring-offset-transparent"
             />
           ) : (
-            <Avatar className="!bg-white !text-black" size={50}>
+            <Avatar
+              className="!bg-white !text-black ring ring-primary ring-offset-transparent"
+              size={50}
+            >
               {value?.name && value?.name[0]}
             </Avatar>
           )}
@@ -145,7 +146,7 @@ const RecentUserTable = ({ data: allUsers, isLoading, refetch }) => {
         },
       }}
     >
-      <h4 className="text-primary-white mb-6 text-2xl font-semibold">
+      <h4 className="mb-6 text-2xl font-semibold text-primary-white">
         Recently Joined Users
       </h4>
 

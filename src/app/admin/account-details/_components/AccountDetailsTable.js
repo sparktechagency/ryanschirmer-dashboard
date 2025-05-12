@@ -88,7 +88,12 @@ export default function AccountDetailsTable() {
               className="aspect-square rounded-full bg-white ring ring-primary ring-offset-transparent"
             />
           ) : (
-            <Avatar size={50}>{value?.name && value?.name[0]}</Avatar>
+            <Avatar
+              size={50}
+              className="ring ring-primary ring-offset-transparent"
+            >
+              {value?.name && value?.name[0]}
+            </Avatar>
           )}
 
           <p className="font-medium">{value?.name}</p>

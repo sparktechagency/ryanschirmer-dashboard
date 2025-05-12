@@ -74,11 +74,13 @@ const SidebarContainer = ({ collapsed }) => {
       }}
       className="scroll-hide !shadow-xl"
     >
-      <div className="mb-6 flex flex-col items-center justify-center gap-y-5">
+      <div className="mb-6 flex flex-col items-center justify-center">
         <Link href={"/"}>
           <Image
             src={"/logo.png"}
-            className={collapsed ? "h-[60px] w-[60px]" : "h-[140px] w-[140px]"}
+            height={collapsed ? 60 : 80}
+            width={collapsed ? 60 : 80}
+            // className={collapsed ? "h-[60px] w-[60px]" : "h-[140px] w-[140px]"}
             alt="logo"
           />
         </Link>

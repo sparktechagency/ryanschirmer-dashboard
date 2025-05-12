@@ -42,6 +42,8 @@ export default function BannerContainer() {
               <Image
                 src="https://www.creativehatti.com/wp-content/uploads/edd/2022/03/Banner-template-of-personal-loan-with-easy-payment-13-large.jpg"
                 alt=""
+                height={400}
+                width={280}
                 className="h-[400px] w-[280px] rounded-lg brightness-50 transition-all duration-300 hover:cursor-pointer group-hover:filter"
               />
               <div className="absolute left-0 top-0 flex h-[400px] w-[280px] cursor-pointer items-center justify-center rounded-lg">
@@ -59,6 +61,8 @@ export default function BannerContainer() {
               <Image
                 src="https://www.creativehatti.com/wp-content/uploads/edd/2022/03/Banner-template-of-personal-loan-with-easy-payment-13-large.jpg"
                 alt=""
+                height={400}
+                width={280}
                 className="h-[400px] w-[280px] rounded-lg brightness-50 transition-all duration-300 hover:cursor-pointer group-hover:filter"
               />
               <div className="absolute left-0 top-0 flex h-[400px] w-[280px] cursor-pointer items-center justify-center rounded-lg">

@@ -14,8 +14,8 @@ import dayjs from "dayjs";
 
 const CustomBarChart = ({ chartName, data, setJoinYear }) => {
   return (
-    <div className="w-full p-6 shadow-2xl mary rounded-xl bg-primary-white md:w-1/2">
-      <div className="flex items-center justify-between gap-2 mb-10 lg:flex-wrap xl:flex-nowrap">
+    <div className="mary w-full rounded-xl bg-primary-white p-6 shadow-2xl md:w-1/2">
+      <div className="mb-10 flex items-center justify-between gap-2 lg:flex-wrap xl:flex-nowrap">
         <h1 className="text-xl font-medium text-primary-black">
           {chartName} Overview
         </h1>
@@ -24,6 +24,7 @@ const CustomBarChart = ({ chartName, data, setJoinYear }) => {
           <DatePicker
             onChange={(date, dateString) => setJoinYear(dateString)}
             picker="year"
+            className="border border-primary"
             defaultValue={dayjs()}
             style={{ height: "35px", border: "none" }}
             disabledDate={(current) =>

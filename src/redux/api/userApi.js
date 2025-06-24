@@ -7,11 +7,9 @@ const userApi = baseApi.injectEndpoints({
       query: (arg) => ({
         url: "/users",
         method: "GET",
-        params: {
-          role: "user",
+        params: { 
           ...arg,
-        },
-
+        }, 
         providesTags: [tagTypes.users],
       }),
     }),

@@ -53,8 +53,8 @@ export default function DashboardContainer() {
       count: Number(dashboardData?.totalUsers) || 0,
     },
     {
-      key: "wishlist",
-      title: "Total Wishlist",
+      key: "Today Earnings",
+      title: "Today Earnings",
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ export default function DashboardContainer() {
           </g>
         </svg>
       ),
-      count: Number(dashboardData?.totalInstructor) || 0,
+      count: priceFormat(Number(dashboardData?.todayEarnings)|| 0) ,
     },
     {
       key: "earnings",
@@ -109,15 +109,15 @@ export default function DashboardContainer() {
         {userStats?.map((stat) => (
           <div
             key={stat.key}
-            className="flex-center-start gap-x-4 rounded-xl bg-primary px-6 py-6 text-primary-black shadow-2xl"
+            className="px-6 py-6 shadow-2xl flex-center-start gap-x-4 rounded-xl bg-primary text-primary-black"
           >
-            <div className="flex-center aspect-square rounded-full bg-primary-black p-4">
+            <div className="p-4 rounded-full flex-center aspect-square bg-primary-black">
               {stat.icon}
             </div>
 
             <div>
               <p className="text-lg font-medium">{stat.title}</p>
-              <h5 className="text- mt-1 text-4xl font-medium">
+              <h5 className="mt-1 text-4xl font-medium text-">
                 {stat.key !== "earnings" ? (
                   <span className="">{stat?.count}</span>
                 ) : (
@@ -130,7 +130,7 @@ export default function DashboardContainer() {
       </section>
 
       {/* Charts */}
-      <section className="flex-center-between flex-col gap-10 lg:flex-row">
+      <section className="flex-col gap-10 flex-center-between lg:flex-row">
         <CustomBarChart
           chartName={"Users"}
           data={dashboardData?.monthlyUsers || []}

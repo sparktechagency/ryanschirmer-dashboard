@@ -1,6 +1,5 @@
 "use client";
 
-import userAvatar from "@/assets/images/user-avatar-lg.png";
 import NotificationCard from "./NotificationCard";
 import { Button } from "antd";
 import { Divider } from "antd";
@@ -57,8 +56,8 @@ export default function NotificationContainer() {
   };
 
   return (
-    <div className="rounded-2xl bg-white shadow-2xl">
-      <section className="flex-center-between p-6">
+    <div className="bg-white shadow-2xl rounded-2xl">
+      <section className="p-6 flex-center-between">
         <h3 className="text-2xl font-semibold text-primary-black">
           Notifications
         </h3>
@@ -82,9 +81,9 @@ export default function NotificationContainer() {
 
       <Divider className="!my-0 !w-full bg-white" />
 
-      <div className="mb-10 py-5">
+      <div className="py-5 mb-10">
         {notifications?.length > 0 ? (
-          <section className="space-y-4 px-4">
+          <section className="px-4 space-y-4">
             {notifications?.map((notification) => (
               <NotificationCard
                 key={notification.key}

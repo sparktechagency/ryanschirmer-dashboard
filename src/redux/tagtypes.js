@@ -19,9 +19,11 @@ export const tagTypes = {
   attendance: "Attendance",
   appLaunchRegisteredUsers: "AppLaunchRegisteredUsers",
   dashboardData: "DashboardData",
+  banner: "banner",
 };
 
 export const tagTypesList = [
+  tagTypes.banner,
   tagTypes.auth,
   tagTypes.users,
   tagTypes.user,

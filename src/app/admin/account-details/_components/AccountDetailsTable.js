@@ -34,18 +34,27 @@ const data = Array.from({ length: 5 }).map((_, inx) => ({
 export default function AccountDetailsTable() {
   const [searchTerm, setSearchTerm] = useState("");
   const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [limit, setLimit] = useState(10)
+  const [page, setPage] = useState(1);
 
   // Get all users
+  const query={}
+
+  query["limit"] = limit;
+  query["page"] = page;
+  if (searchTerm) {
+    query["searchTerm"] = searchTerm;
+  }
   const {
     data: allUsersRes,
     isLoading,
     refetch,
-  } = useGetAllUsersQuery({
-    limit: 99999,
-    sort: "-createdAt",
-    searchTerm,
-  });
+  } = useGetAllUsersQuery(query);
+    console.log("🚀 ~ AccountDetailsTable ~ allUsersRes:", allUsersRes)
   const allUsers = allUsersRes?.data?.data || [];
+  const meta = allUsersRes?.data?.
+meta
+ ||{};
 
   // Block/unblock user api handler
   const [blockUser] = useBlockUserMutation();
@@ -85,7 +94,7 @@ export default function AccountDetailsTable() {
               alt={"User avatar of" + value?.name}
               width={50}
               height={50}
-              className="aspect-square rounded-full bg-white ring ring-primary ring-offset-transparent"
+              className="bg-white rounded-full aspect-square ring ring-primary ring-offset-transparent"
             />
           ) : (
             <Avatar
@@ -107,11 +116,19 @@ export default function AccountDetailsTable() {
     {
       title: "Phone Number",
       dataIndex: "phoneNumber",
+      render: (value) => (
+        <p className="text-muted">{value || "N/A"}</p>
+      ),
     },
     {
       title: "Joined At",
       dataIndex: "createdAt",
       render: (value) => <p>{dayjs(value).format("DD MMM, YYYY")}</p>,
+    },
+    {
+      title: "Role",
+      dataIndex: "role",
+      render: (value) => <p>{value}</p>,
     },
     {
       title: "Status",
@@ -181,7 +198,7 @@ export default function AccountDetailsTable() {
       }}
     >
       <div className="mb-10 !rounded-2xl p-5 shadow-2xl">
-        <div className="flex-center-between mb-4 px-1">
+        <div className="px-1 mb-4 flex-center-between">
           <h2 className="text-[26px] font-semibold text-white">
             Account Details
           </h2>
@@ -200,7 +217,15 @@ export default function AccountDetailsTable() {
           dataSource={allUsers}
           scroll={{ x: "100%" }}
           loading={isLoading}
-          pagination
+          pagination={{
+            pageSize: limit,
+            current: page,
+            total: meta?.total || 0,
+            onChange: (page, pageSize) => {
+              setPage(page);
+              setLimit(pageSize);
+            },
+          }}
         ></Table>
       </div>
       <ProfileModal open={profileModalOpen} setOpen={setProfileModalOpen} />

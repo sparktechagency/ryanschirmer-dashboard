@@ -25,7 +25,7 @@ export default function ChangeProfilePicModal({ open, setOpen, profile }) {
     }
 
     const formData = new FormData();
-    formData.append("image", data?.image[0]?.originFileObj);
+    formData.append("profile", data?.image[0]?.originFileObj);
 
     try {
       await updateProfile(formData).unwrap();
@@ -41,12 +41,12 @@ export default function ChangeProfilePicModal({ open, setOpen, profile }) {
   }
 
   const defaultValues = {
-    image: profile?.image
+    image: profile?.profile
       ? [
           {
             uid: "-1",
             name: "profile_image",
-            url: profile?.image,
+            url: profile?.profile,
             status: "completed",
           },
         ]

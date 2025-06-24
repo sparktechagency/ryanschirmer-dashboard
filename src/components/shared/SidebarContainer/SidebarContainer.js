@@ -11,7 +11,7 @@ import { successToast } from "@/utils/customToast";
 import { LayoutDashboard } from "lucide-react";
 import { BookImage } from "lucide-react";
 import Image from "next/image";
-
+import logo from "../../../assets/logos/logo.png"
 const SidebarContainer = ({ collapsed }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -74,12 +74,12 @@ const SidebarContainer = ({ collapsed }) => {
       }}
       className="scroll-hide !shadow-xl"
     >
-      <div className="mb-6 flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mb-6">
         <Link href={"/"}>
           <Image
-            src={"/logo.png"}
-            height={collapsed ? 60 : 80}
-            width={collapsed ? 60 : 80}
+            src={logo}
+            height={collapsed ? 50 : 80}
+            width={collapsed ? 80 : 200}
             // className={collapsed ? "h-[60px] w-[60px]" : "h-[140px] w-[140px]"}
             alt="logo"
           />

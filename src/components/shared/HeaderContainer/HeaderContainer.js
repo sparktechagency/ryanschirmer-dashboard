@@ -93,7 +93,7 @@ export default function HeaderContainer({ collapsed, setCollapsed }) {
 
   return (
     <Header
-      className="border-[rgb(0 0 0 / 0.25)] z-[999999] border-b !shadow-lg"
+      className="border-[rgb(0 0 0 / 0.25)] z-[1] border-b !shadow-lg"
       style={{
         backgroundColor: "var(--primary-white)",
         color: "var(--primary-black)",
